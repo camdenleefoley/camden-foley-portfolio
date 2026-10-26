@@ -6,6 +6,7 @@ async function main() {
       "Explicit Contentful environment configuration is required",
     );
   }
+  console.log(JSON.stringify({ configuredSpace: process.env.CONTENTFUL_SPACE_ID, configuredEnvironment: environment, whitespaceInSpace: process.env.CONTENTFUL_SPACE_ID !== process.env.CONTENTFUL_SPACE_ID.trim(), whitespaceInEnvironment: environment !== environment.trim() }));
   const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${environment}`;
   for (const [mode, token] of [
     ["published", process.env.CONTENTFUL_ACCESS_TOKEN],
