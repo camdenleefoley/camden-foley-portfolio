@@ -42,3 +42,5 @@ Use Node.js 24.x. Ongoing work and production use the `camden-foley-portfolio-ne
 Open a pull request for changes and check its Vercel preview before merging into New. The existing Vercel project is `camden-foley-portfolio`; do not create a replacement project to deploy updates. Keep credentials in Vercel environment variables, never in repository files.
 
 Contentful production content comes from `camden-foley-portfolio-new`. The `master` alias points to that environment. Publishing entry or asset changes triggers the authenticated `/api/revalidation` webhook; the preserved Original comparison reads its separate Original environment.
+
+After reconnecting GitHub, verify Vercel's Production environment still tracks `camden-foley-portfolio-new`; a successful branch preview alone does not verify production deployment.
