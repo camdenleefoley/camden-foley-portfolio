@@ -30,8 +30,15 @@ async function main() {
       !result.data?.siteCollection?.total ||
       !result.data?.projectCollection?.total
     ) {
+      const details = (result.errors || [])
+        .map((error) =>
+          String(
+            error.message || error.extensions?.code || "Unknown GraphQL error",
+          ).replaceAll(token, "[redacted]"),
+        )
+        .join("; ");
       throw new Error(
-        `Contentful ${mode} read failed for ${environment}: HTTP ${response.status}`,
+        `Contentful ${mode} read failed for ${environment}: HTTP ${response.status}; ${details}`,
       );
     }
     console.log(
