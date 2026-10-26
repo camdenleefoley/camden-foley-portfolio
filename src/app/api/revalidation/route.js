@@ -9,6 +9,7 @@ export async function POST(request) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
+  // Webhooks expire content immediately so the next request receives fresh data.
   revalidateTag("pages", { expire: 0 });
   revalidateTag("info", { expire: 0 });
   revalidateTag("projects", { expire: 0 });
