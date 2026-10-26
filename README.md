@@ -40,3 +40,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Use Node.js 24.x. Ongoing work and production use the `camden-foley-portfolio-new` branch. Keep `camden-foley-portfolio-original` unchanged as the handover baseline.
 
 Open a pull request for changes and check its Vercel preview before merging into New. The existing Vercel project is `camden-foley-portfolio`; do not create a replacement project to deploy updates. Keep credentials in Vercel environment variables, never in repository files.
+
+Contentful production content comes from `camden-foley-portfolio-new`. The `master` alias points to that environment. Publishing entry or asset changes triggers the authenticated `/api/revalidation` webhook; the preserved Original comparison reads its separate Original environment.
