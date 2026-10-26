@@ -9,12 +9,13 @@ export async function POST(request) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-  revalidateTag("pages");
-  revalidateTag("info");
-  revalidateTag("projects");
-  revalidateTag("collections");
-  revalidateTag("projectSections");
-  revalidateTag("site");
+  // Webhooks expire content immediately so the next request receives fresh data.
+  revalidateTag("pages", { expire: 0 });
+  revalidateTag("info", { expire: 0 });
+  revalidateTag("projects", { expire: 0 });
+  revalidateTag("collections", { expire: 0 });
+  revalidateTag("projectSections", { expire: 0 });
+  revalidateTag("site", { expire: 0 });
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }
