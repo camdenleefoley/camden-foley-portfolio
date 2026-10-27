@@ -98,8 +98,6 @@ export default function Template({ children }) {
             if (!isAnimating) {
               setIsAnimating(true);
             }
-            console.log("origin", originPosition);
-            console.log("target", targetPosition);
           }}
           onAnimationComplete={() => {
             setIsAnimating(false);

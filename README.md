@@ -44,3 +44,7 @@ Open a pull request for changes and check its Vercel preview before merging into
 Contentful production content comes from `camden-foley-portfolio-new`. The `master` alias points to that environment. Publishing entry or asset changes triggers the authenticated `/api/revalidation` webhook; the preserved Original comparison reads its separate Original environment.
 
 After reconnecting GitHub, verify Vercel's Production environment still tracks `camden-foley-portfolio-new`; a successful branch preview alone does not verify production deployment.
+
+Password access uses signed eight-hour sessions. Configure a randomly generated `SESSION_SECRET` of at least 32 characters as a Vercel Secret, with independent values for Production, Preview and Development. Rotating it invalidates existing sessions without changing project passwords. Never reuse `SITE_PASSWORD` as the signing key. Old unsigned cookies are intentionally rejected.
+
+Run `npm test` and `npm run lint` before release. `npm run build` also starts the built app on localhost for authenticated regression checks using the configured service credentials; it does not print passwords, session values or private content. Local full builds require the Contentful and authentication environment variables. Contentful preview/publishing credentials are separate from the session-signing key.

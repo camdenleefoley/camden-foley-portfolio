@@ -1,17 +1,16 @@
 import { ImageResponse } from "next/og";
-import Image from "next/image";
 
 import { getProject } from "@/lib/api/projects";
 
 // Route segment config
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export const size = {
   width: 600,
   height: 800,
 };
 
-export const contentType = "image/jpg";
+export const contentType = "image/png";
 
 export default async function OpenGraphImage({ params }) {
   const { slug } = await params;
@@ -21,6 +20,7 @@ export default async function OpenGraphImage({ params }) {
   return new ImageResponse(
     <img
       src={heroImage.url}
+      alt={heroImage.description || project.name}
       width={size.width}
       height={size.height}
       style={{

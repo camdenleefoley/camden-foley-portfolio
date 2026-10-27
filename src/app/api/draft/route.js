@@ -16,12 +16,12 @@ export async function GET(request) {
     return new Response("Invalid token", { status: 401 });
   }
 
-  const project = await getProject(slug.replace(/^\/+/g, ""));
+  const project = await getProject(slug.replace(/^\/+/g, ""), true);
 
   if (!project) {
     return new Response("Project not found", { status: 404 });
   }
 
   (await draftMode()).enable();
-  redirect(`/projects/${project.slug}`);
+  redirect(`/projects/${project.slug.replace(/^\/+/, "")}`);
 }
