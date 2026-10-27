@@ -1,17 +1,16 @@
 import { ImageResponse } from "next/og";
-import Image from "next/image";
 
 import { getPage } from "@/lib/api/pages";
 
 // Route segment config
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export const size = {
   width: 800,
   height: 800,
 };
 
-export const contentType = "image/jpg";
+export const contentType = "image/png";
 
 export default async function OpenGraphImage({ params }) {
   const page = await getPage("info");
@@ -20,6 +19,7 @@ export default async function OpenGraphImage({ params }) {
   return new ImageResponse(
     <img
       src={lockup.image.url}
+      alt="Camden Foley portfolio"
       width={size.width}
       height={size.height}
       style={{

@@ -95,8 +95,9 @@ export async function getAllProjects(limit = 100, isDraftMode = false) {
 }
 
 export async function getProject(slug, isDraftMode = false) {
+  const contentfulSlug = JSON.stringify(`/${slug.replace(/^\/+/, "")}`);
   const query = `query {
-        projectCollection(where:{slug: "/${slug}"}, limit: 1, preview: ${
+        projectCollection(where:{slug: ${contentfulSlug}}, limit: 1, preview: ${
           isDraftMode ? "true" : "false"
         }) {
           items {

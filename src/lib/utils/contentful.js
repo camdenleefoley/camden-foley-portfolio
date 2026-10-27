@@ -9,7 +9,6 @@ export function getCollectionIds(collection) {
 }
 
 export async function fetchGraphQL(query, preview = false, tags = []) {
-  console.log("fetch tags", tags);
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT_ID || "master"}`,
     {

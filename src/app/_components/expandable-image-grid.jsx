@@ -56,7 +56,6 @@ const ExpandableImageGrid = ({
 
     // getBoundingClientRect() only reflects the just-committed grid/slider
     // layout after paint, so this can't be derived during render.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowSlider(false);
     setTransition({
       image: images[activeIndex],

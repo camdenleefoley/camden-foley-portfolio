@@ -71,7 +71,7 @@ export default function ProjectThumbnail({
         height: rect.height,
       });
     }
-  }, [currentProject, viewTransitionName]);
+  }, [currentProject, viewTransitionName, setOriginPosition]);
 
   const handleClone = (elementToClone, ref) => {
     const rect = ref.current.getBoundingClientRect();

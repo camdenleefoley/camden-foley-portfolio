@@ -66,7 +66,7 @@ export default function Sidebar({
         height: rect.height,
       });
     }
-  }, []);
+  }, [setTargetPosition]);
 
   return (
     <div
